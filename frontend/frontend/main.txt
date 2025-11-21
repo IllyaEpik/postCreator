@@ -1,0 +1,12 @@
+post/
+    title (string)
+    userId (number)
+    content (text)
+    image (link?)
+    likes (many-to-many)
+user/
+    firstName (string)
+    secondName (string?)
+    email (string)
+    password (string)
+    likedPosts (many-to-many)
