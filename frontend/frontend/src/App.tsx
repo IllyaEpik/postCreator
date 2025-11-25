@@ -1,5 +1,15 @@
 import React from "react";
+import { Header } from "./header";
+import { Main } from "./main";
+import { Footer } from "./footer";
 
 export default function App() {
-    return <p>with this site you can create posts</p>;
+    return <div>
+        
+        <Header/>
+        <hr />
+        <Main/>
+        <hr />
+        <Footer/>
+    </div>;
 }
