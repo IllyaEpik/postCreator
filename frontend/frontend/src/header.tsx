@@ -1,11 +1,11 @@
 import React from "react";
 import {HeaderButton} from "./header.button";
-
+import styles from "./header.module.css";
 export function Header() {
     
-    return <header>
+    return <header className={styles.header}>
         <HeaderButton href="" text = "postCreator"/>
-        <div id="pages">
+        <div id={styles.pages}>
             <HeaderButton href="/posts" text = "posts"/>
             <HeaderButton href="/createPost" text = "create post"/>
             <HeaderButton href="/main" text = "main"/>

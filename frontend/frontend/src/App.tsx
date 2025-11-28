@@ -2,14 +2,12 @@ import React from "react";
 import { Header } from "./header";
 import { Main } from "./main";
 import { Footer } from "./footer";
-
+import styles from "./main.module.css";
 export default function App() {
-    return <div>
+    return <div id={styles.body}>
         
         <Header/>
-        <hr />
         <Main/>
-        <hr />
         <Footer/>
     </div>;
 }
