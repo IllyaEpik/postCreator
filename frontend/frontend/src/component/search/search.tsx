@@ -9,13 +9,13 @@ export default function Search() {
         </div>
         
         {/* <button>decline</button> */}
-        <div>
-            <select name="likes" id="likes" aria-placeholder="likes">
+        <div className={styles.menuList}>
+            <select name="likes" id="likes" aria-placeholder="likes" className={styles.selectMenu}>
                 <option value="50">likes 50</option>
                 <option value="100">likes 100</option>
                 <option value="150">likes 150</option>
             </select>
-            <select name="tags" id="tags" aria-placeholder="tags">
+            <select name="tags" id="tags" aria-placeholder="tags" className={styles.selectMenu}>
                 <option value="1">lol</option>
                 <option value="2">funny cats</option>
                 <option value="3">satana</option>
