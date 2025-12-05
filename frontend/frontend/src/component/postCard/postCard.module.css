@@ -1,0 +1,33 @@
+.postCard{
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: min-content;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    padding: 15px;
+}
+.titleBlock{
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 clamp(10px, 2vw, 30px);
+    align-items: center;
+}
+.description{
+    background-color: rgba(255, 255, 255, 0.1);
+    /* min-height: 50px; */
+    /* border-radius: 25px; */
+}
+.tagsBlock{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.tag{
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 25px;
+    padding: 10px 15px;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import PostCard from "../postCard/postCard";
-import Search from "../../search";
+import Search from "../search/search";
+import styles from "./postList.module.css";
 const posts = [
     {
         title:"title",
@@ -18,7 +19,7 @@ const posts = [
 export default function PostList() {
     return <div>
         <Search/>
-        <div>
+        <div className={styles.postList}>
         {
             posts.map((post) => {
                 return <PostCard post={post}/>

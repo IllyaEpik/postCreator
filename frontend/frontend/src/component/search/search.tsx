@@ -1,11 +1,14 @@
 import React from "react";
-
+import styles from "./search.module.css";
 
 export default function Search() {
-    return <div>
-        <input type="text" />
-        <button>search</button>
-        <button>decline</button>
+    return <div className={styles.fullSearchBlock}>
+        <div className={styles.searchDiv}>
+            <input type="text" className={styles.searchInput} placeholder="search"/>
+            <button className={styles.searchButton}>search</button>
+        </div>
+        
+        {/* <button>decline</button> */}
         <div>
             <select name="likes" id="likes" aria-placeholder="likes">
                 <option value="50">likes 50</option>

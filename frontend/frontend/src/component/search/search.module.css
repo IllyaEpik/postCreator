@@ -1,0 +1,22 @@
+.searchDiv{
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: fit-content;
+    overflow: hidden;
+    height: min-content;
+}
+.fullSearchBlock{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.searchInput{
+    background-color: rgba(255, 255, 255, 0.05);
+    padding-left: 5px;
+    border: 0;
+}
+.searchButton{
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 0;
+}
