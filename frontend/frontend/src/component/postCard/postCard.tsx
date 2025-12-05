@@ -1,5 +1,5 @@
 import React from "react";
-import { IProbs } from "./types";
+import { IProbs } from "../../types";
 
 
 export default function PostCard(probs:IProbs) {

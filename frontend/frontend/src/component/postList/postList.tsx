@@ -1,6 +1,6 @@
 import React from "react";
-import PostCard from "./postCard";
-import Search from "./search";
+import PostCard from "../postCard/postCard";
+import Search from "../../search";
 const posts = [
     {
         title:"title",

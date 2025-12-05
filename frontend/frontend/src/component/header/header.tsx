@@ -1,5 +1,5 @@
 import React from "react";
-import {HeaderButton} from "./header.button";
+import {HeaderButton} from "../header.button/header.button";
 import styles from "./header.module.css";
 export function Header() {
     

@@ -16,19 +16,3 @@
     color:  black;
     text-decoration: none;
 }
-.header {
-    /* gap: 10px; */
-    display: flex;
-    justify-content: space-between;
-    /* position: fixed; */
-    margin: 0;
-    padding: 0;
-
-    border-bottom: 1px #A6A6A6 solid;
-}
-#pages{
-    
-    display: flex;
-    gap: 10px;
-    justify-content: space-around;
-}
