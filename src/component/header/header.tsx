@@ -6,7 +6,7 @@ import styles from "./header.module.css";
 export function Header() {
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 950px)' })
     
-    return <header className={styles.header}>
+    return (<header className={styles.header}>
         <HeaderButton href="" text = "postCreator"/>
         
             
@@ -23,7 +23,6 @@ export function Header() {
                 <HeaderButton href="/language" text = "english"/>
                 <img src="/avatar.png" alt="avatar" />
             </div>
-            }
-            
-    </header>
+        }
+        </header>)
 }

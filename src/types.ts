@@ -4,8 +4,9 @@ export interface IPost{
         avatar:string,
         description:string,
         likes:number,
-        tags: string[]
+        tags: number[]
     }
 export interface IProbs{
-    post:IPost
+    post:IPost,
+    tags:string[]
 }
