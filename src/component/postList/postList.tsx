@@ -14,7 +14,7 @@ const posts = [
         image:"search.png",
         avatar:"avatar.png",
         description:"hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
-        likes:213,
+        likes:101,
         tags: [
             0
         ]
@@ -24,7 +24,7 @@ const posts = [
         image:"search.png",
         avatar:"avatar.png",
         description:"hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
-        likes:213,
+        likes:51,
         tags: [
             1,
             2,
@@ -33,8 +33,7 @@ const posts = [
     },
     {
         title:"capybara",
-        image:
-        "search.png",
+        image:"search.png",
         avatar:"avatar.png",
         description:"hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
         likes:213,
