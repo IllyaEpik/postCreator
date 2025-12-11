@@ -1,34 +1,27 @@
 import React, { useEffect, useState } from "react";
 import styles from "./search.module.css";
-import { tags } from "../postList/postList";
+import { tags,posts } from "../postList/postList";
+import { IProbs } from "./types";
 
-export default function Search() {
-    const [selectedTag, SetSelectedTag] = useState("")
+export default function Search(probs:IProbs) {
+    const [selectedTag, SetSelectedTag] = useState(0)
     const [textInSearch, SettextInSearch] = useState("")
     const [likes, setLikes] = useState(0)
+    const setFilteredPosts = probs.setFilteredPosts
     useEffect(() => {
-        const postCards = document.querySelectorAll("#postCard")
-        postCards.forEach((elem)=>{
-            const tagBlock = (elem.querySelector("#tagBlock") as HTMLElement)
-            const titleBlock = (elem.querySelector("#titleBlock") as HTMLSpanElement)
-            const likesBlock = (elem.querySelector("#likesBlock") as HTMLSpanElement)
-
-            const postCard = (elem as HTMLElement)
-            console.log(likesBlock?.textContent)
-
-            if (!titleBlock?.textContent){
-                return
+        const filteredPosts = posts.filter((post)=>{
+            if (!post.tags.includes(selectedTag)){
+                return false
             }
-            const doesTagIncluded = tagBlock?.innerHTML.includes(selectedTag)
-            const doesNameIncluded = titleBlock?.textContent.includes(textInSearch)
-            const doesLikesCountOk = Number(likesBlock?.textContent)>likes
-
-            if (!doesTagIncluded || !doesNameIncluded || !doesLikesCountOk){
-                postCard.style.display = "none"
-            }else{
-                postCard.style.display = "flex"
+            if (!post.title.includes(textInSearch)){
+                return false
             }
+            if (post.likes < likes){
+                return false
+            }
+            return true
         })
+        setFilteredPosts(filteredPosts)
     }, [selectedTag,textInSearch,likes])
     return <div className={styles.fullSearchBlock}>
         <div className={styles.searchDiv}>
@@ -45,7 +38,7 @@ export default function Search() {
                 <option value="100" className={styles.option}>likes 100</option>
                 <option value="150" className={styles.option}>likes 150</option>
             </select>
-            <select name="tags" id="tags" aria-placeholder="tags" className={styles.selectMenu} onChange={(event) => {SetSelectedTag(tags[Number(event.target.value)])}}>
+            <select name="tags" id="tags" aria-placeholder="tags" className={styles.selectMenu} onChange={(event) => {SetSelectedTag(Number(event.target.value))}}>
                 {
                     tags.map((elem,index) => {
                         return <option value={index} className={styles.option}>{elem}</option>

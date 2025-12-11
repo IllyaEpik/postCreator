@@ -1,5 +1,5 @@
 import React from "react";
-import { IProbs } from "../../types";
+import { IProbs } from "./types";
 import styles from "./postCard.module.css";
 
 export default function PostCard(probs:IProbs) {

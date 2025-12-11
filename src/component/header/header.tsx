@@ -1,5 +1,5 @@
 import React from "react";
-import {HeaderButton} from "../header.button/header.button";
+import {HeaderButton} from "../headerButton/header.button";
 import { ReactComponent as Menu } from "../../assets/svg/menu.svg";
 import { useMediaQuery  } from "react-responsive";
 import styles from "./header.module.css";

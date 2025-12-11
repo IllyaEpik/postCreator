@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PostCard from "../postCard/postCard";
 import Search from "../search/search";
 import styles from "./postList.module.css";
@@ -8,7 +8,7 @@ export const tags = [
      'nether',
      "animal"
 ]
-const posts = [
+export const posts = [
     {
         title:"title",
         image:"search.png",
@@ -44,11 +44,12 @@ const posts = [
     }
 ]
 export default function PostList() {
+    const [filteredPosts, setFilteredPosts] = useState(posts)
     return <div>
-        <Search/>
+        <Search setFilteredPosts={setFilteredPosts}/>
         <div className={styles.postList}>
         {
-            posts.map((post) => {
+            filteredPosts.map((post) => {
                 return <PostCard post={post} tags={tags}/>
             })
         }
