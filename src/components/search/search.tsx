@@ -4,7 +4,7 @@ import { tags } from "../postList/postList";
 import { IProbs } from "./types";
 import { IPost } from "../../shared/dbTypes";
 
-export default function Search(probs:IProbs) {
+export function Search(probs:IProbs) {
     const [selectedTag, SetSelectedTag] = useState(0)
     const [textInSearch, SettextInSearch] = useState("")
     const [likes, setLikes] = useState(0)

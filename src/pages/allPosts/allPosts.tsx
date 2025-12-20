@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import PostList from "../../component/postList/postList";
-import Search from "../../component/search/search";
+import {PostList} from "../../components/postList";
+import {Search} from "../../components/search";
 import type{ IPost } from "../../shared/dbTypes";
-export default function AllPosts() {
+export function AllPosts() {
     // async function getRequest():Promise<IPost[]> {
     //     const response = await fetch('http://127.0.0.1:8888/posts/all')
     //     const posts:IPost[] = await response.json()

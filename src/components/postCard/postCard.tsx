@@ -2,7 +2,7 @@ import React from "react";
 import { IProbs } from "./types";
 import styles from "./postCard.module.css";
 
-export default function PostCard(probs:IProbs) {
+export function PostCard(probs:IProbs) {
     const post = probs.post
     const tags = probs.tags
     return <div className={styles.postCard} id="postCard">

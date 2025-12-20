@@ -1,4 +1,4 @@
 import like from "../assets/images/like.png";
-export {
+export const IMAGES = {
     like
 }

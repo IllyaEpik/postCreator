@@ -1,18 +1,1 @@
-import React from "react";
-import AllPosts from "../pages/allPosts/allPosts";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "./Layout/layout";
-import MainPage from "../pages/main/main";
-export default function App() {
-    return <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<Layout/>}>
-
-                <Route path="/main" element={<MainPage/>}></Route>
-
-                <Route path="/posts" element={<AllPosts/>}></Route>
-            </Route>
-        </Routes>
-    </BrowserRouter>
-    
-}
+export {App} from "./app-router";
