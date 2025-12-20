@@ -7,19 +7,24 @@ export default function PostCard(probs:IProbs) {
     const tags = probs.tags
     return <div className={styles.postCard} id="postCard">
         <div className={styles.titleBlock}>
-            <span id="titleBlock">{post.title}</span>
-            <img src={post.avatar} alt="" />
+            <span id="titleBlock">{post.name}</span>
+            {/* <img src={post.avatar} alt="" /> */}
         </div>
-        <img src={post.image} alt="" />
+        {
+            post.img ? 
+            <img src={post.img} alt="" /> :
+            <img src="" alt="" />
+        }
+        
         <p className={styles.description}>{probs.post.description}</p> 
         <div className={styles.footerBlock}>
             <div className={styles.tagsBlock} id="tagBlock">
             
-                {post.tags.map((tag) => {
+                {/* {post.tags.map((tag) => {
                     return <span className={styles.tag}>#{tags[tag]}</span>
-                })}
+                })} */}
             </div>
-            <span className={styles.LikesBlock} id="LikesBlock"><img src="/like.png" alt="" />{post.likes}</span>  
+            {/* <span className={styles.LikesBlock} id="LikesBlock"><img src="/like.png" alt="" />{post.likes}</span>   */}
         </div>
     </div>;
 }

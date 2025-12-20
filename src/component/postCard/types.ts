@@ -1,11 +1,4 @@
-export interface IPost{
-        title:string,
-        image:string,
-        avatar:string,
-        description:string,
-        likes:number,
-        tags: number[]
-    }
+import { IPost } from "../../shared/dbTypes";
 export interface IProbs{
     post:IPost,
     tags:string[]

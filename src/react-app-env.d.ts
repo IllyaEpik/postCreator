@@ -1,2 +1,2 @@
 /// <reference types="react-scripts" />
-import "./App";
+import "./app/App";

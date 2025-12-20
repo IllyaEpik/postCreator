@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./search.module.css";
-import { tags,posts } from "../postList/postList";
+import { tags } from "../postList/postList";
 import { IProbs } from "./types";
+import { IPost } from "../../shared/dbTypes";
 
 export default function Search(probs:IProbs) {
     const [selectedTag, SetSelectedTag] = useState(0)
@@ -9,19 +10,38 @@ export default function Search(probs:IProbs) {
     const [likes, setLikes] = useState(0)
     const setFilteredPosts = probs.setFilteredPosts
     useEffect(() => {
-        const filteredPosts = posts.filter((post)=>{
-            if (!post.tags.includes(selectedTag)){
+        async function getRequest():Promise<IPost[]> {
+            try{
+                const response = await fetch('http://127.0.0.1:8888/posts/all')
+                const posts:IPost[] = await response.json()
+                console.log(posts)
+                return await posts
+            }catch (error){
+                console.log(error)
+                return []
+            }
+            
+        }
+        const posts:Promise<IPost[]> = getRequest() 
+        let filteredPosts 
+        posts.then((postsValue) => {
+            filteredPosts = postsValue.filter((post)=>{
+            // if (!post.tags.includes(selectedTag)){
+            //     return false
+            // }
+            if (!post.name.includes(textInSearch)){
                 return false
             }
-            if (!post.title.includes(textInSearch)){
-                return false
-            }
-            if (post.likes < likes){
-                return false
-            }
+            // if (post.likes < likes){
+            //     return false
+            // }
             return true
         })
         setFilteredPosts(filteredPosts)
+        })
+        
+
+        
     }, [selectedTag,textInSearch,likes])
     return <div className={styles.fullSearchBlock}>
         <div className={styles.searchDiv}>
