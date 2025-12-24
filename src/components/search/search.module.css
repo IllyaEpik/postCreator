@@ -45,3 +45,13 @@
     background-color: rgba(0,0,0,0.9);
 
 }
+.displayError{
+    background-color: rgba(255,255,255,0.1);
+    color: red;
+    border-radius: 25px;
+    text-align: center;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import { IProbs } from "./types";
 import styles from "./postCard.module.css";
+import { IMAGES } from "../../shared/images";
 
 export function PostCard(probs:IProbs) {
     const post = probs.post
@@ -13,18 +14,18 @@ export function PostCard(probs:IProbs) {
         {
             post.img ? 
             <img src={post.img} alt="" /> :
-            <img src="" alt="" />
+            <div></div>
         }
         
         <p className={styles.description}>{probs.post.description}</p> 
         <div className={styles.footerBlock}>
             <div className={styles.tagsBlock} id="tagBlock">
             
-                {post.tags.map((tag) => {
-                    return <span className={styles.tag}>#{tag}</span>
+                {tags.map((tag,index) => {
+                    return <span className={styles.tag} key={index}>#{tag}</span>
                 })}
             </div>
-            {/* <span className={styles.LikesBlock} id="LikesBlock"><img src="/like.png" alt="" />{post.likes}</span>   */}
+            <span className={styles.LikesBlock} id="LikesBlock"><img src={IMAGES.like} alt="" />{post.likes}</span>  
         </div>
     </div>;
 }

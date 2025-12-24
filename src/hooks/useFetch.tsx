@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { IPost } from "../shared";
-
-export function useFetch<T>(url:string): [T | undefined, boolean, unknown] {
+export function useFetch<T>(url:string): [T | undefined, boolean, unknown, ()=> void] {
         const [data,setData] = useState<T>()
         const [error,setError] = useState<unknown>(null)
         const [loading,setLoading] = useState<boolean>(true)
+        const [refetchIndex, setRefetchIndex] = useState(0);
+        const refresh = () => setRefetchIndex(refetchIndex+1)
         useEffect(() => {   
             const fetchData = async () => {
                 try {
@@ -21,6 +21,6 @@ export function useFetch<T>(url:string): [T | undefined, boolean, unknown] {
             }
             fetchData()
             
-        }, [url,loading])
-        return [ data, loading, error ]
+        }, [url,refetchIndex])
+        return [ data, loading, error, refresh ]
 } 
