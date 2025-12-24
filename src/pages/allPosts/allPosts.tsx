@@ -3,6 +3,7 @@ import {PostList} from "../../components/postList";
 import {Search} from "../../components/search";
 import type{ IPost } from "../../shared/dbTypes";
 import { useFetch } from "../../hooks/useFetch";
+import styles from "./allPosts.module.css";
 export function AllPosts() {
     // async function getRequest():Promise<IPost[]> {
     //     const response = await fetch('http://127.0.0.1:8888/posts/all')
@@ -16,7 +17,7 @@ export function AllPosts() {
     useEffect(() => {
         setFilteredPosts(data ? data : [])
     },[loading])
-    return <div>
+    return <div className={styles.allPostsPage}>
         <Search setFilteredPosts={setFilteredPosts} posts={filteredPosts}/>
         <PostList posts={filteredPosts}/>
         

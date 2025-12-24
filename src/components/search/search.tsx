@@ -6,7 +6,7 @@ import { IPost, ITags } from "../../shared/dbTypes";
 import { useFetch } from "../../hooks/useFetch";
 
 export function Search(probs:IProbs) {
-    const [selectedTag, SetSelectedTag] = useState("")
+    const [selectedTag, SetSelectedTag] = useState("any")
     const [textInSearch, SettextInSearch] = useState("")
     const [likes, setLikes] = useState(0)
     const {setFilteredPosts, posts} = probs
@@ -19,28 +19,26 @@ export function Search(probs:IProbs) {
             
         },[textInSearch,likes,selectedTag])
     useEffect(()=>{
-        if (loadingPosts!==true){
-            return
-        }
-        if (tagError || postError){
-
-            }
+        // if (loadingPosts!==true){
+        //     return
+        // }
         if (postsData) {
-            const passedPosts = postsData.filter((post) => {
-                if (!(post.name.includes(textInSearch))){
-                    return false
-                }
-                if (post.likes<likes){
-                    return false
-                }
-                if (!(post.tags.includes(selectedTag))){
-                    return false
-                }
-                return true
-            })
-            setFilteredPosts(passedPosts);
-        }
-    },[loadingPosts])
+                const passedPosts = postsData.filter((post) => {
+                    if (!(post.name.includes(textInSearch))){
+                        return false
+                    }
+                    if (post.likes<likes){
+                        return false
+                    }
+                    if (!(post.tags.includes(selectedTag)) && selectedTag!="any"){
+                        return false
+                    }
+                    return true
+                })
+                setFilteredPosts(passedPosts);
+            }
+        
+    },[postsData,loadingPosts,postError])
 
         
     // }, [selectedTag,textInSearch,likes])
@@ -69,6 +67,7 @@ export function Search(probs:IProbs) {
                                 return <option value={elem.name} key={index} className={styles.option}>{elem.name}</option>
                             }) : ''
                         }
+                        <option value="any" className={styles.option}>any</option>
                     </select>
                 </div> : 
                 <div className={styles.displayError}>happened error</div>

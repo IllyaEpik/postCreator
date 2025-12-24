@@ -10,8 +10,7 @@ import { IProbs } from "./types";
 // ]
 export function PostList(probs:IProbs) {
     const filteredPosts = probs.posts
-    return <div>
-        <div className={styles.postList}>
+    return <div className={styles.postList}>
         {
             filteredPosts ? 
             filteredPosts.map((post,index) => {
@@ -20,5 +19,4 @@ export function PostList(probs:IProbs) {
         }
         </div>
         
-    </div>;
 }

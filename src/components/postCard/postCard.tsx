@@ -13,7 +13,7 @@ export function PostCard(probs:IProbs) {
         </div>
         {
             post.img ? 
-            <img src={post.img} alt="" /> :
+            <img src={post.img} alt="" className={styles.img} /> :
             <div></div>
         }
         
