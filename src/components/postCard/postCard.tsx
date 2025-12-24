@@ -20,9 +20,9 @@ export function PostCard(probs:IProbs) {
         <div className={styles.footerBlock}>
             <div className={styles.tagsBlock} id="tagBlock">
             
-                {/* {post.tags.map((tag) => {
-                    return <span className={styles.tag}>#{tags[tag]}</span>
-                })} */}
+                {post.tags.map((tag) => {
+                    return <span className={styles.tag}>#{tag}</span>
+                })}
             </div>
             {/* <span className={styles.LikesBlock} id="LikesBlock"><img src="/like.png" alt="" />{post.likes}</span>   */}
         </div>

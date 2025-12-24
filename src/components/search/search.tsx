@@ -1,48 +1,38 @@
 import React, { useEffect, useState } from "react";
 import styles from "./search.module.css";
-import { tags } from "../postList/postList";
+// import { tags } from "../postList/postList";
 import { IProbs } from "./types";
-import { IPost } from "../../shared/dbTypes";
+import { IPost, ITags } from "../../shared/dbTypes";
+import { useFetch } from "../../hooks/useFetch";
 
 export function Search(probs:IProbs) {
-    const [selectedTag, SetSelectedTag] = useState(0)
+    const [selectedTag, SetSelectedTag] = useState("")
     const [textInSearch, SettextInSearch] = useState("")
     const [likes, setLikes] = useState(0)
-    const setFilteredPosts = probs.setFilteredPosts
+    const {setFilteredPosts, posts} = probs
+    const [postsData, loadingPosts, postError ] = useFetch<IPost[]>('http://127.0.0.1:8888/posts/all')
+    const [tagsData, tagsLoading, tagError ] = useFetch<ITags[]>('http://127.0.0.1:8888/tags/all')
     useEffect(() => {
-        async function getRequest():Promise<IPost[]> {
-            try{
-                const response = await fetch('http://127.0.0.1:8888/posts/all')
-                const posts:IPost[] = await response.json()
-                console.log(posts)
-                return await posts
-            }catch (error){
-                console.log(error)
-                return []
+            if (postsData) {
+                const passedPosts = postsData.filter((post) => {
+                    if (!(post.name.includes(textInSearch))){
+                        return false
+                    }
+                    if (post.likes<likes){
+                        return false
+                    }
+                    if (!(post.tags.includes(selectedTag))){
+                        return false
+                    }
+                    return true
+                })
+                setFilteredPosts(passedPosts);
             }
-            
-        }
-        const posts:Promise<IPost[]> = getRequest() 
-        let filteredPosts 
-        posts.then((postsValue) => {
-            filteredPosts = postsValue.filter((post)=>{
-            // if (!post.tags.includes(selectedTag)){
-            //     return false
-            // }
-            if (!post.name.includes(textInSearch)){
-                return false
-            }
-            // if (post.likes < likes){
-            //     return false
-            // }
-            return true
-        })
-        setFilteredPosts(filteredPosts)
-        })
+        },[textInSearch,likes,selectedTag])
         
 
         
-    }, [selectedTag,textInSearch,likes])
+    // }, [selectedTag,textInSearch,likes])
     return <div className={styles.fullSearchBlock}>
         <div className={styles.searchDiv}>
             <input type="text" className={styles.searchInput} placeholder="write post name" id="searchInput"/>
@@ -51,20 +41,22 @@ export function Search(probs:IProbs) {
                 SettextInSearch(text)
                 }}>search</button>
         </div>
-        <div className={styles.menuList}>
-            <select name="likes" id="likes" aria-placeholder="likes" className={styles.selectMenu}
-             onChange={(event) => {setLikes(Number(event.target.value))}}>
-                <option value="50" className={styles.option}>likes 50</option>
-                <option value="100" className={styles.option}>likes 100</option>
-                <option value="150" className={styles.option}>likes 150</option>
-            </select>
-            <select name="tags" id="tags" aria-placeholder="tags" className={styles.selectMenu} onChange={(event) => {SetSelectedTag(Number(event.target.value))}}>
-                {
-                    tags.map((elem,index) => {
-                        return <option value={index} className={styles.option}>{elem}</option>
-                    })
-                }
-            </select>
-        </div>
+            <div className={styles.menuList}>
+                <select name="likes" id="likes" aria-placeholder="likes" className={styles.selectMenu}
+                onChange={(event) => {setLikes(Number(event.target.value))}}>
+                    <option value="0" className={styles.option}>likes 0</option>
+                    <option value="50" className={styles.option}>likes 50</option>
+                    <option value="100" className={styles.option}>likes 100</option>
+                    <option value="150" className={styles.option}>likes 150</option>
+                </select>
+                <select name="tags" id="tags" aria-placeholder="tags" className={styles.selectMenu} onChange={(event) => {SetSelectedTag(event.target.value)}}>
+                    {
+
+                        tagsData ? tagsData.map((elem,index) => {
+                            return <option value={elem.name} key={index} className={styles.option}>{elem.name}</option>
+                        }) : ''
+                    }
+                </select>
+            </div>
     </div>;
 }

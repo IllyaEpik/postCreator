@@ -9,10 +9,10 @@ export function App() {
             <Route path="/" element={<Layout/>}>
 
                 <Route path="/main" element={<MainPage/>}></Route>
+                <Route path="/" element={<MainPage/>}></Route>
 
                 <Route path="/posts" element={<AllPosts/>}></Route>
             </Route>
         </Routes>
     </BrowserRouter>
-    
 }

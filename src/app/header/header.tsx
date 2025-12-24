@@ -1,6 +1,7 @@
 import React from "react";
 import {HeaderButton} from "../headerButton/header.button";
 import { ReactComponent as Menu } from "../../assets/svg/menu.svg";
+import { IMAGES } from "../../shared/images";
 import { useMediaQuery  } from "react-responsive";
 import styles from "./header.module.css";
 export function Header() {
@@ -13,7 +14,7 @@ export function Header() {
             {isTabletOrMobile ? 
             <div id={styles.pages}>
             <Menu width={50} height={50} className={styles.menu}/>
-                <img src="/avatar.png" alt="avatar" />
+                <img src={IMAGES.avatar} alt="avatar" />
             </div>
             :
             <div id={styles.pages}>
@@ -21,7 +22,7 @@ export function Header() {
                 <HeaderButton href="/createPost" text = "create post"/>
                 <HeaderButton href="/main" text = "main"/>
                 <HeaderButton href="/language" text = "english"/>
-                <img src="/avatar.png" alt="avatar" />
+                <img src={IMAGES.avatar} alt="avatar" />
             </div>
         }
         </header>)

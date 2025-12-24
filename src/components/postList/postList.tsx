@@ -2,20 +2,20 @@ import React from "react";
 import { PostCard } from "../postCard";
 import styles from "./postList.module.css";
 import { IProbs } from "./types";
-export const tags = [
-     "nature",
-     "hell",
-     'nether',
-     "animal"
-]
+// export const tags = [
+//      "nature",
+//      "hell",
+//      'nether',
+//      "animal"
+// ]
 export function PostList(probs:IProbs) {
     const filteredPosts = probs.posts
     return <div>
         <div className={styles.postList}>
         {
             filteredPosts ? 
-            filteredPosts.map((post) => {
-                return <PostCard post={post} tags={tags}/>
+            filteredPosts.map((post,index) => {
+                return <PostCard post={post} tags={post.tags} key={index}/>
             }) : <div></div>
         }
         </div>
