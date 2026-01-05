@@ -1,0 +1,10 @@
+.avatarDiv{
+    background-color: rgb(0, 197, 10);
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}

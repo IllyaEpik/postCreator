@@ -14,7 +14,7 @@ export function PostList(probs:IProbs) {
         {
             filteredPosts ? 
             filteredPosts.map((post,index) => {
-                return <PostCard post={post} tags={post.tags} key={index}/>
+                return <PostCard post={post} tags={post.tags} key={post.id}/>
             }) : <div></div>
         }
         </div>

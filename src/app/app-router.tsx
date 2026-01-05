@@ -3,6 +3,7 @@ import {AllPosts} from "../pages/allPosts";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Layout/layout";
 import {MainPage} from "../pages/main";
+import { PostPage } from "../pages/PostPage";
 export function App() {
     return <BrowserRouter>
         <Routes>
@@ -12,6 +13,7 @@ export function App() {
                 <Route path="/" element={<MainPage/>}></Route>
 
                 <Route path="/posts" element={<AllPosts/>}></Route>
+                <Route path="/post/:id" element={<PostPage/>}></Route>
             </Route>
         </Routes>
     </BrowserRouter>
