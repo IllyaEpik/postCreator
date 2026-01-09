@@ -27,7 +27,7 @@ export function Search(probs:IProbs) {
                     if (!(post.name.includes(textInSearch))){
                         return false
                     }
-                    if (post.likes<likes){
+                    if (post.likes.length<likes){
                         return false
                     }
                     if (!(post.tags.includes(selectedTag)) && selectedTag!="any"){

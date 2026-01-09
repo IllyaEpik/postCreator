@@ -5,8 +5,15 @@ export interface IPost {
     img: string | null;
     userId: number;
     tags:string[];
-    likes:number,
+    likes:number[],
     comments:string[]
+}
+export interface likedPost{
+    name: string;
+    id: number;
+    userId: number;
+    description: string;
+    img: string | null;
 }
 export interface ITags {
     id:number,
