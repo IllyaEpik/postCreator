@@ -19,3 +19,10 @@ export interface ITags {
     id:number,
     name:string
 }
+export type Icomment = {
+    id: number;
+    userId: number;
+    postId: number;
+    body: string;
+    createdAt: Date;
+}

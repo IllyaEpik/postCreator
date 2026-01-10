@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import styles from "./post.module.css";
 import { Back } from "../../components/back/index";
 import { CommentWriter } from "../../components/commentWriter";
+import { Avatar } from "../../shared/avatar";
+import { Comment } from "../../components/comment";
 export function PostPage(){
     const {id} = useParams()
 
@@ -17,9 +19,14 @@ export function PostPage(){
     if (error || !postData){
         return <div>error</div>
     }
+    const comments = postData.comments
+    console.log(comments)
     return <div className={styles.post}>
         <Back/>
         <PostCard tags={postData?.tags} post={postData}/>
-        <CommentWriter></CommentWriter>
+        <CommentWriter id={Number(id)}></CommentWriter>
+        {comments.map((comment,index)=>{
+            return <Comment commentText={comment}/>
+        })}
     </div>
 }

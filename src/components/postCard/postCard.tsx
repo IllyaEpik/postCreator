@@ -23,7 +23,6 @@ export function PostCard(probs:IProbs) {
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzY3NzA1MjMwLCJleHAiOjE3NjgzMTAwMzB9.RMdtj-b8fwhEc-3diykyMmWzdVAMa9lO2WQ9Dr6Don8"
     const handleLike = async (event: React.MouseEvent) => {
         event.stopPropagation();
-        console.log("Qweqwewqe")
         try {
             const response = await fetch(`http://127.0.0.1:8888/posts/like/${id}`, {
                 method: "PUT",

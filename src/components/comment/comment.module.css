@@ -1,0 +1,23 @@
+.icon{
+    width: 25px;
+    height: 25px;
+}
+.icon path{
+    stroke: white !important;
+    fill: white;
+}
+.fullComment{
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 15px;
+    margin: 15px;
+    text-align: left    ;
+}
+.head{
+    display: flex;
+    justify-content: space-between;
+}
+.userData{
+    display: flex;
+    gap: 15px;
+}
