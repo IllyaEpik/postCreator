@@ -4,6 +4,7 @@ import {Search} from "../../components/search";
 import type{ IPost } from "../../shared/dbTypes";
 import { useFetch } from "../../hooks/useFetch";
 import styles from "./allPosts.module.css";
+import { PostContextProvider } from "../../context/postContext";
 export function AllPosts() {
     // async function getRequest():Promise<IPost[]> {
     //     const response = await fetch('http://127.0.0.1:8888/posts/all')
@@ -11,15 +12,18 @@ export function AllPosts() {
     //     return await posts
     // }
     // const posts:Promise<IPost[]> = getRequest()
-    const [data, loading, error ] = useFetch<IPost[]>('http://127.0.0.1:8888/posts/all')
-    // console.log(data)
-    const [filteredPosts, setFilteredPosts] = useState<IPost[]>([])
-    useEffect(() => {
-        setFilteredPosts(data ? data : [])
-    },[loading])
+    // const [data, loading, error ] = useFetch<IPost[]>('http://127.0.0.1:8888/posts/all')
+    // // console.log(data)
+    // const [filteredPosts, setFilteredPosts] = useState<IPost[]>([])
+    // useEffect(() => {
+    //     setFilteredPosts(data ? data : [])
+    // },[loading])
     return <div className={styles.allPostsPage}>
-        <Search setFilteredPosts={setFilteredPosts} posts={filteredPosts}/>
-        <PostList posts={filteredPosts}/>
+        <PostContextProvider>
+            <Search/>
+            
+            <PostList/>
+        </PostContextProvider>
         
     </div>;
 }

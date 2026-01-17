@@ -8,10 +8,14 @@ import {SVG} from "../../shared/svg";
 
 export function Back() {
     return (
-        <div className={styles.backDiv}>
-            <span><SVG.backArrow className={styles.backArrow}/>back
-                
-            </span>
+        <div className={styles.backContainer}>
+            <div className={styles.backDiv}>
+                <SVG.backArrow className={styles.backArrow}/>
+                <span>back
+                    
+                </span>
+            </div>
+
         </div>
     )
 }

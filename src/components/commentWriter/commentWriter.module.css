@@ -1,11 +1,9 @@
-.smallEditor {
-  /* width: 400px; */
-  height: 100px;
-}
+
 /* .smallEditor  */
 .allCommentWriter{
   display: flex;
   flex-direction: column;
+  margin-top: 50px;
 }
 .buttonSender{
   margin-top: 42px;

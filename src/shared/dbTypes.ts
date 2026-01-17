@@ -26,3 +26,9 @@ export type Icomment = {
     body: string;
     createdAt: Date;
 }
+export interface postCreate{
+    name: string;
+    description: string;
+    img: string | null;
+
+}

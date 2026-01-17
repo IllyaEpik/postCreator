@@ -4,3 +4,18 @@
     margin-left: auto;
     margin-right: auto;
 }
+.fullPage{
+    height: 100%;
+    width: 100%;
+}
+
+.commentsBlock{
+    overflow-y: scroll;
+}
+.empty{
+    height: 100px;
+}
+.smallEmpty{
+    height: 50px;
+
+}

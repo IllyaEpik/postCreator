@@ -1,47 +1,52 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./search.module.css";
 // import { tags } from "../postList/postList";
 import { IProbs } from "./types";
 import { IPost, ITags } from "../../shared/dbTypes";
 import { useFetch } from "../../hooks/useFetch";
+import { PostContext } from "../../context/postContext";
 
-export function Search(probs:IProbs) {
-    const [selectedTag, SetSelectedTag] = useState("any")
-    const [textInSearch, SettextInSearch] = useState("")
-    const [likes, setLikes] = useState(0)
-    const {setFilteredPosts, posts} = probs
-    const [postsData, loadingPosts, postError,refreshPosts ] = useFetch<IPost[]>('http://127.0.0.1:8888/posts/all')
-    const [tagsData, tagsLoading, tagError,refreshTags ] = useFetch<ITags[]>('http://127.0.0.1:8888/tags/all')
-    useEffect(() => {
-            refreshPosts()
-            
-            
-            
-        },[textInSearch,likes,selectedTag])
-    useEffect(()=>{
-        // if (loadingPosts!==true){
-        //     return
-        // }
-        if (postsData) {
-                const passedPosts = postsData.filter((post) => {
-                    if (!(post.name.includes(textInSearch))){
-                        return false
-                    }
-                    if (post.likes.length<likes){
-                        return false
-                    }
-                    if (!(post.tags.includes(selectedTag)) && selectedTag!="any"){
-                        return false
-                    }
-                    return true
-                })
-                setFilteredPosts(passedPosts);
-            }
-        
-    },[postsData,loadingPosts,postError])
+export function Search() {
+    // const [selectedTag, SetSelectedTag] = useState("any")
+    // const [textInSearch, SettextInSearch] = useState("")
+    // const [likes, setLikes] = useState(0)
+    // const {setFilteredPosts, posts} = probs
+    // const [postsData, loadingPosts, postError,refreshPosts ] = useFetch<IPost[]>('http://127.0.0.1:8888/posts/all')
+    // const [tagsData, tagsLoading, tagError,refreshTags ] = useFetch<ITags[]>('http://127.0.0.1:8888/tags/all')
+    const context = useContext(PostContext);
+    if (!context) return null;
+    const {
+        posts,
+        tags,
+        likes,
+        textInSearch,
+        postError,
+        selectedTag,
+        SettextInSearch,
+        setLikes,
+        refreshPosts,
+        refreshTags,
+        SetSelectedTag
+    } = context
 
+    // useEffect(()=>{
+    //     if (postsData) {
+    //             const passedPosts = postsData.filter((post) => {
+    //                 if (!(post.name.includes(textInSearch))){
+    //                     return false
+    //                 }
+    //                 if (post.likes.length<likes){
+    //                     return false
+    //                 }
+    //                 if (!(post.tags.includes(selectedTag)) && selectedTag!="any"){
+    //                     return false
+    //                 }
+    //                 return true
+    //             })
+    //             setFilteredPosts(passedPosts);
+    //         }
         
-    // }, [selectedTag,textInSearch,likes])
+    // },[postsData,loadingPosts,postError])
     return <div className={styles.fullSearchBlock}>
         <div className={styles.searchDiv}>
             <input type="text" className={styles.searchInput} placeholder="write post name" id="searchInput"/>
@@ -63,7 +68,7 @@ export function Search(probs:IProbs) {
                     <select name="tags" id="tags" aria-placeholder="tags" className={styles.selectMenu} onChange={(event) => {SetSelectedTag(event.target.value)}}>
                         {
 
-                            tagsData ? tagsData.map((elem,index) => {
+                            tags ? tags.map((elem,index) => {
                                 return <option value={elem.name} key={index} className={styles.option}>{elem.name}</option>
                             }) : ''
                         }

@@ -21,12 +21,32 @@ export function PostPage(){
     }
     const comments = postData.comments
     console.log(comments)
-    return <div className={styles.post}>
-        <Back/>
-        <PostCard tags={postData?.tags} post={postData}/>
+    return <div className={styles.fullPage}>
+        <div>
+            <Back/>
+
+        </div>
+        
+        <div className={styles.post}>
+            <PostCard tags={postData?.tags} post={postData}/>
+
+        </div>
+        <div className={styles.empty}>
+
+        </div>
+        {/* <div className={styles.commentsBlock}> */}
         <CommentWriter id={Number(id)}></CommentWriter>
+            
+        <div className={styles.smallEmpty}>
+
+        </div>
         {comments.map((comment,index)=>{
             return <Comment commentText={comment}/>
         })}
+
+        {/* </div> */}
+        <div className={styles.empty}>
+
+        </div>
     </div>
 }

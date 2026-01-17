@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Layout/layout";
 import {MainPage} from "../pages/main";
 import { PostPage } from "../pages/PostPage";
+import { CreatePost } from "../pages/createPostPage";
 export function App() {
     return <BrowserRouter>
         <Routes>
@@ -14,6 +15,7 @@ export function App() {
 
                 <Route path="/posts" element={<AllPosts/>}></Route>
                 <Route path="/post/:id" element={<PostPage/>}></Route>
+                <Route path="/createPost" element={<CreatePost/>}></Route>
             </Route>
         </Routes>
     </BrowserRouter>
