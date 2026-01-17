@@ -25,6 +25,7 @@ export function CommentWriter(probs:IProbs){
 				<button type="submit" className={styles.buttonSender} onClick={() => {
 					const text = value.split("<p>").join("").split("</p>").join("")
 					setValue("")
+					console.log(text)
 					sendComment(text)	
 				}}>send</button>
 			}

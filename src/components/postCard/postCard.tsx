@@ -6,6 +6,7 @@ import { Avatar} from "../../shared/avatar"
 import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import { likedPost } from "../../shared/dbTypes";
+import { useLike } from "../../hooks/useLike";
 
 export function PostCard(probs:IProbs) {
     const navigate = useNavigate();
@@ -18,39 +19,8 @@ export function PostCard(probs:IProbs) {
             navigate(`/post/${id}`);
         }
     };
-    console.log(post)
     const userId = 1
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzY3NzA1MjMwLCJleHAiOjE3NjgzMTAwMzB9.RMdtj-b8fwhEc-3diykyMmWzdVAMa9lO2WQ9Dr6Don8"
-    const handleLike = async (event: React.MouseEvent) => {
-        event.stopPropagation();
-        try {
-            const response = await fetch(`http://127.0.0.1:8888/posts/like/${id}`, {
-                method: "PUT",
-                headers: { 
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                },
-                
-            });
-            // console.log(response)
-            if (response.ok) {
-                console.log("what all is ok?    ")
-                if (response.status==201){
-                    const updatedLikes: number[] = await response.json(); 
-                    
-                    setPost({ ...post, likes: updatedLikes });
-                    return
-                }
-                if (response.status==204){
-                    const updatedLikes = post.likes.filter((like)=>{return like!=userId})
-                    setPost({ ...post, likes: updatedLikes });
-                    return
-                }
-            }
-        } catch (error) {
-            console.error("Error:", error);
-        }
-    };
+    const handleLike = useLike(setPost,id,post)
     return <div 
         className={styles.postCard} 
         id={"post_"+String(post.id)}
@@ -64,7 +34,6 @@ export function PostCard(probs:IProbs) {
 
             </div>
             <img src="" alt="" />
-            {/* <img src={post.avatar} alt="" /> */}
         </div>
          <span id="titleBlock">{post.name}</span>
         
